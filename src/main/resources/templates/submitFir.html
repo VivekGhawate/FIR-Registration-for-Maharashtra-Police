@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit FIR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+        .form-container {
+            background-color: #778899;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            margin: 20px;
+            overflow-y: auto; /* Allow vertical scrolling */
+            max-height: 80vh; /* Restrict the height of the form container */
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 10px;
+            }
+            .form-group label,
+            .form-group input,
+            .form-group select {
+                font-size: 14px;
+            }
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Submit FIR</h2>
+    <form action="/submitFir" method="post">
+        <div class="form-group">
+            <label for="district">District:</label>
+            <input type="text" id="district" name="district" required>
+        </div>
+        <div class="form-group">
+            <label for="policeStation">Police Station:</label>
+            <select id="policeStation" name="policeStation" required>
+                <option value="">Select Police Station</option>
+                <option th:each="station : ${policeStations}" th:value="${station}" th:text="${station}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="act">ACT:</label>
+            <select id="act" name="act" required>
+                <option value="">Select ACT</option>
+                <option th:each="act : ${actOptions}" th:value="${act}" th:text="${act}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="firNumber">FIR Number:</label>
+            <input type="text" id="firNumber" name="firNumber" value="Auto-generated" readonly>
+        </div>
+        <div class="form-group">
+            <label for="dateTime">Date & Time of FIR:</label>
+            <input type="datetime-local" id="dateTime" name="dateTime" required>
+        </div>
+        <div class="form-group">
+            <label for="generalDiaryNumber">General Diary Reference Number:</label>
+            <input type="text" id="generalDiaryNumber" name="generalDiaryNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="infoType">Type of Information:</label>
+            <select id="infoType" name="infoType" required>
+                <option value="">Select Type</option>
+                <option th:each="type : ${infoTypes}" th:value="${type}" th:text="${type}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="placeOfOccurrence">Place of Occurrence:</label>
+            <input type="text" id="placeOfOccurrence" name="placeOfOccurrence" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantName">Complainant / Informant Full Name:</label>
+            <input type="text" id="complainantName" name="complainantName" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantDob">Complainant / Informant Date of Birth:</label>
+            <input type="date" id="complainantDob" name="complainantDob" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantNationality">Complainant / Informant Nationality:</label>
+            <input type="text" id="complainantNationality" name="complainantNationality" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantAadhaarNumber">Complainant / Informant Aadhaar Number:</label>
+            <input type="text" id="complainantAadhaarNumber" name="complainantAadhaarNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantOccupation">Complainant / Informant Occupation:</label>
+            <input type="text" id="complainantOccupation" name="complainantOccupation" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantMobile">Complainant / Informant Mobile Number:</label>
+            <input type="text" id="complainantMobile" name="complainantMobile" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantAddress">Complainant / Informant Address:</label>
+            <input type="text" id="complainantAddress" name="complainantAddress" required>
+        </div>
+        <div class="form-group">
+            <label for="suspectName">Suspect Name:</label>
+            <input type="text" id="suspectName" name="suspectName" required>
+        </div>
+        <div class="form-group">
+            <label for="suspectAddress">Suspect Address:</label>
+            <input type="text" id="suspectAddress" name="suspectAddress" required>
+        </div>
+        <div class="form-group">
+            <label for="enquiryOfficerName">Enquiry Officer Name:</label>
+            <input type="text" id="enquiryOfficerName" name="enquiryOfficerName" required>
+        </div>
+        <div class="form-group">
+            <label for="enquiryOfficerRank">Enquiry Officer Rank:</label>
+            <select id="enquiryOfficerRank" name="enquiryOfficerRank" required>
+                <option value="">Select Rank</option>
+                <option th:each="rank : ${ranks}" th:value="${rank}" th:text="${rank}"></option>
+            </select>
+        </div>
+        <button type="submit">Submit FIR</button>
+    </form>
+</div>
+</body>
+</html>

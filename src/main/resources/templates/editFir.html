@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit FIR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Edit FIR</h2>
+    <form action="#" th:action="@{/editFir}" th:object="${firReport}" method="post">
+        <div class="form-group">
+            <label for="district">District:</label>
+            <input type="text" id="district" th:field="*{district}" required>
+        </div>
+        <div class="form-group">
+            <label for="policeStation">Police Station:</label>
+            <select id="policeStation" th:field="*{policeStation}" required>
+                <option th:each="station : ${policeStations}" th:value="${station}" th:text="${station}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="act">ACT:</label>
+            <select id="act" th:field="*{act}" required>
+                <option th:each="actOption : ${actOptions}" th:value="${actOption}" th:text="${actOption}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dateTime">Date & Time of FIR:</label>
+            <input type="datetime-local" id="dateTime" th:field="*{dateTime}" required>
+        </div>
+        <div class="form-group">
+            <label for="generalDiaryRefNumber">General Diary Reference Number:</label>
+            <input type="text" id="generalDiaryRefNumber" th:field="*{generalDiaryRefNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="typeOfInformation">Type of Information:</label>
+            <select id="typeOfInformation" th:field="*{typeOfInformation}" required>
+                <option th:each="infoType : ${infoTypes}" th:value="${infoType}" th:text="${infoType}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="placeOfOccurrence">Place of Occurrence:</label>
+            <input type="text" id="placeOfOccurrence" th:field="*{placeOfOccurrence}" required>
+        </div>
+        <div class="form-group">
+            <label for="complainantName">Complainant/Informant Full Name:</label>
+            <input type="text" id="complainantName" th:field="*{complainantName}" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Complainant/Informant Date of Birth:</label>
+            <input type="date" id="dob" th:field="*{dob}" required>
+        </div>
+        <div class="form-group">
+            <label for="nationality">Complainant/Informant Nationality:</label>
+            <input type="text" id="nationality" th:field="*{nationality}" required>
+        </div>
+        <div class="form-group">
+            <label for="aadhaarNumber">Complainant/Informant Aadhaar Number:</label>
+            <input type="text" id="aadhaarNumber" th:field="*{aadhaarNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="occupation">Complainant/Informant Occupation:</label>
+            <input type="text" id="occupation" th:field="*{occupation}" required>
+        </div>
+        <div class="form-group">
+            <label for="mobileNumber">Complainant/Informant Mobile Number:</label>
+            <input type="text" id="mobileNumber" th:field="*{mobileNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Complainant/Informant Address:</label>
+            <input type="text" id="address" th:field="*{address}" required>
+        </div>
+        <div class="form-group">
+            <label for="suspectName">Suspect Name:</label>
+            <input type="text" id="suspectName" th:field="*{suspectName}" required>
+        </div>
+        <div class="form-group">
+            <label for="suspectAddress">Suspect Address:</label>
+            <input type="text" id="suspectAddress" th:field="*{suspectAddress}" required>
+        </div>
+        <div class="form-group">
+            <label for="enquiryOfficerName">Enquiry Officer Name:</label>
+            <input type="text" id="enquiryOfficerName" th:field="*{enquiryOfficerName}" required>
+        </div>
+        <div class="form-group">
+            <label for="enquiryOfficerRank">Enquiry Officer Rank:</label>
+            <select id="enquiryOfficerRank" th:field="*{enquiryOfficerRank}" required>
+                <option th:each="rank : ${ranks}" th:value="${rank}" th:text="${rank}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="firNumber">FIR Number:</label>
+            <input type="text" id="firNumber" th:field="*{firNumber}" readonly>
+        </div>
+        <div class="form-group">
+            <button type="submit">Update FIR</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

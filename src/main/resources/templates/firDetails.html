@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIR Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            background-color: #90EE90;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            margin: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>FIR Details</h2>
+    <p><strong>FIR Number:</strong> <span th:text="${firReport.firNumber}"></span></p>
+    <p><strong>Date & Time:</strong> <span th:text="${firReport.dateTime}"></span></p>
+    <p><strong>District:</strong> <span th:text="${firReport.district}"></span></p>
+    <p><strong>Police Station:</strong> <span th:text="${firReport.policeStation}"></span></p>
+    <p><strong>ACT:</strong> <span th:text="${firReport.act}"></span></p>
+    <p><strong>General Diary Reference Number:</strong> <span th:text="${firReport.generalDiaryRefNumber}"></span></p>
+    <p><strong>Type of Information:</strong> <span th:text="${firReport.typeOfInformation}"></span></p>
+    <p><strong>Place of Occurrence:</strong> <span th:text="${firReport.placeOfOccurrence}"></span></p>
+    <p><strong>Complainant Name:</strong> <span th:text="${firReport.complainantName}"></span></p>
+    <p><strong>Date of Birth:</strong> <span th:text="${firReport.dob}"></span></p>
+    <p><strong>Nationality:</strong> <span th:text="${firReport.nationality}"></span></p>
+    <p><strong>Aadhaar Number:</strong> <span th:text="${firReport.aadhaarNumber}"></span></p>
+    <p><strong>Occupation:</strong> <span th:text="${firReport.occupation}"></span></p>
+    <p><strong>Mobile Number:</strong> <span th:text="${firReport.mobileNumber}"></span></p>
+    <p><strong>Address:</strong> <span th:text="${firReport.address}"></span></p>
+    <p><strong>Suspect Name:</strong> <span th:text="${firReport.suspectName}"></span></p>
+    <p><strong>Suspect Address:</strong> <span th:text="${firReport.suspectAddress}"></span></p>
+    <p><strong>Enquiry Officer Name:</strong> <span th:text="${firReport.enquiryOfficerName}"></span></p>
+    <p><strong>Enquiry Officer Rank:</strong> <span th:text="${firReport.enquiryOfficerRank}"></span></p>
+    <p><a href="/view-firs"><button>Back to FIR List</button></a></p>
+</div>
+</body>
+</html>

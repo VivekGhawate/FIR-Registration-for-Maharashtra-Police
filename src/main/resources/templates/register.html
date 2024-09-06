@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: #BDB76B;
+            border: #c82333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .form-container img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .form-group label {
+            width: 150px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 600px;
+            background-color:#218838 ;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        .alert, .success {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .alert {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .link-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .link-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTgYMzSoFfNp6Vsf6_xVasr5a3P-6j5MKwuA&s">
+    <h2>Register</h2>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required oninput="updateFullName()">
+        </div>
+        <div class="form-group">
+            <label for="middleName">Middle Name:</label>
+            <input type="text" id="middleName" name="middleName" required oninput="updateFullName()">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required oninput="updateFullName()">
+        </div>
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" readonly>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile" required pattern="\d{10}">
+        </div>
+        <div class="form-group">
+            <label for="username">Email:</label>
+            <input type="email" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit">Register</button>
+        <a href="/login" class="link-button">Go to Login</a>
+
+    </form>
+</div>
+<script>
+    function updateFullName() {
+        var firstName = document.getElementById('firstName').value;
+        var middleName = document.getElementById('middleName').value;
+        var lastName = document.getElementById('lastName').value;
+        var fullName = firstName + (middleName ? ' ' + middleName : '') + (lastName ? ' ' + lastName : '');
+        document.getElementById('fullName').value = fullName;
+    }
+</script>
+</body>
+</html>

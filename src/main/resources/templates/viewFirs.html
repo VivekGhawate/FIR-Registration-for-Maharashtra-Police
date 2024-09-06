@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View FIRs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+        }
+        .container {
+            background-color: #FFA07A;
+            background-image: url('https://hindi.latestly.com/agency-news/maharashtra-police-receives-over-11-lakh-applications-for-18331-vacanciesr-1600884.html');
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            box-sizing: border-box;
+            margin: 20px;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit {
+            background-color: #007bff;
+        }
+
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-view {
+            background-color: #28a745;
+        }
+
+        .btn-view:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>View FIRs</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>District</th>
+            <th>Police Station</th>
+            <th>ACT</th>
+            <th>Date & Time</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fir : ${firReports}">
+            <td th:text="${fir.id}"></td>
+            <td th:text="${fir.district}"></td>
+            <td th:text="${fir.policeStation}"></td>
+            <td th:text="${fir.act}"></td>
+            <td th:text="${fir.dateTime}"></td>
+            <td>
+                <a th:href="@{/firDetails(id=${fir.id})}">
+                    <button>View Details</button>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/editFir(id=${fir.id})}">
+                    <button>Edit</button>
+                </a>
+            </td>
+
+        </tr>
+        <a href="/home" class="btn btn-submit">Back</a>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
